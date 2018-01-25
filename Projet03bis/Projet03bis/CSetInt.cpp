@@ -1,12 +1,13 @@
 #include "stdafx.h"
 #include "CSetInt.h"
-#include <iostream>
+
+#include "iostream"
 using namespace std;
 
 //...............................
 // Constructeurs et destructeur .
 //...............................
-CSetInt::CSetInt()
+CSetInt::CSetInt()											
 {
 	m_tTab = (int*)malloc(sizeof(int) * TAILLESTANDARD);
 	m_dTailleMax = TAILLESTANDARD;
@@ -26,15 +27,11 @@ CSetInt::~CSetInt()
 //....................
 // Getters & Setters .
 //....................
-int CSetInt::Get_TailleMax()
+int CSetInt::Get_TailleMax() const throw()
 {
 	return m_dTailleMax;
 }
-/*int CSetInt::Get_tTab()
-{
-	return m_tTab;
-}*/
-int CSetInt::Get_dIndex()
+int CSetInt::Get_dIndex() const throw()
 {
 	return m_dIndex;
 }
@@ -42,9 +39,6 @@ void CSetInt::Set_TailleMax(int dTaille)
 {
 	m_dTailleMax = dTaille;
 }
-/*void CSetInt::Set_tTab(int *tTab)
-{
-}*/
 void CSetInt::Set_dindex(int dIndex)
 {
 	m_dIndex = dIndex;
@@ -78,7 +72,7 @@ void CSetInt::fctIfIntExist(int dIntTest)
 //..........................................
 // Fonction d'affichage d'un tableau d'int .
 //..........................................
-int CSetInt::fctShowTable()
+void CSetInt::fctShowTable() const throw()
 {
 	cout << "Tableau d'entiers :" << endl;
 	for (int i = 0; i < m_dIndex; i++)
@@ -87,5 +81,5 @@ int CSetInt::fctShowTable()
 	}
 	cout << endl;
 
-	return 0;
+	return;
 }
