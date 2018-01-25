@@ -17,16 +17,9 @@ int main()
 		{
 			tab1.fctAddInt(i + 1);
 		}
-		catch (int dB)
+		catch (exception const& oE)
 		{
-			if (dB == 123)
-			{
-				cerr << "Erreur : " << dB << " , taille maximale du tableau atteinte." << endl;
-			}
-			if (dB == 456)
-			{
-				cerr << "Erreur : " << dB << " , entier deja present dans le tableau." << endl;
-			}
+			cerr << "Erreur : " << oE.what() << endl;
 		}
 	}
 	cout << tab1.fctShowTable() << endl;

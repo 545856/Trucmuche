@@ -56,7 +56,7 @@ void CSetInt::fctAddInt(int dAdd)
 {
 	if (m_dIndex >= m_dTailleMax)
 	{
-		throw int(123);
+		throw Erreur(123, "Taille max atteinte", 2);
 	}
 
 	fctIfIntExist(dAdd);
@@ -71,7 +71,7 @@ void CSetInt::fctIfIntExist(int dIntTest)
 	{
 		if (m_tTab[i] == dIntTest)
 		{
-			throw int(456);
+			throw Erreur(456, "Entier deja present", 2);
 		}
 	}
 }

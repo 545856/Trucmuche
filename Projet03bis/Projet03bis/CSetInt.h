@@ -1,4 +1,7 @@
 #pragma once
+#include "exception"
+#include "string"
+using namespace std;
 #define TAILLESTANDARD 5
 
 class CSetInt
@@ -26,4 +29,28 @@ public:
 	int fctShowTable();
 };
 
+class Erreur : public exception
+{
+private:
+	int m_dNumeroErreur;
+	string m_strMessageErreur;
+	int m_dNiveauErreur;
 
+public:
+	Erreur(int dNumero = 0, string const& strPhrase = "", int dNiveau = 0)
+		throw()
+		: m_dNumeroErreur(dNumero), m_strMessageErreur(strPhrase), m_dNiveauErreur(dNiveau)
+	{}
+	virtual const char* what() const throw()
+	{
+		return m_strMessageErreur.c_str();
+	}
+
+	int getNiveauErreur() const throw()
+	{
+		return m_dNiveauErreur;
+	}
+
+	virtual ~Erreur() throw()
+	{}
+};
