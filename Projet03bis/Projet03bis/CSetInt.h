@@ -1,7 +1,5 @@
 #pragma once
-#define TAILLESTANDARD 50
-#include <iostream>
-using namespace std;
+#define TAILLESTANDARD 5
 
 class CSetInt
 {
@@ -23,8 +21,8 @@ public:
 	void Set_dindex(int dIndex);
 	//void Set_tTab(int *tTab);
 
-	bool fctAddInt(int dAdd);
-	bool fctIfIntExist(int dIntTest);
+	void fctAddInt(int dAdd);
+	void fctIfIntExist(int dIntTest);
 	int fctShowTable();
 };
 

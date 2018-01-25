@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "CSetInt.h"
+#include <iostream>
+using namespace std;
+
 //...............................
 // Constructeurs et destructeur .
 //...............................
@@ -17,7 +20,7 @@ CSetInt::CSetInt(int dInt)
 }
 CSetInt::~CSetInt()
 {
-	cout << "Suppression du tableau d'entiers.";
+	cout << "Suppression du tableau d'entiers." << endl;
 	free(m_tTab);
 }
 //....................
@@ -49,20 +52,18 @@ void CSetInt::Set_dindex(int dIndex)
 //............................
 // Fonctions de manipulation .
 //............................
-bool CSetInt::fctAddInt(int dAdd)
+void CSetInt::fctAddInt(int dAdd)
 {
-	if (!fctIfIntExist(dAdd) && m_dIndex < m_dTailleMax)
+	if (m_dIndex >= m_dTailleMax)
 	{
-		m_tTab[m_dIndex] = dAdd;
-		m_dIndex++;
-		return true;
+		throw int(123);
 	}
-	else
-	{
-		return false;
-	}
+
+	fctIfIntExist(dAdd);
+	m_tTab[m_dIndex] = dAdd;
+	m_dIndex++;
 }
-bool CSetInt::fctIfIntExist(int dIntTest)
+void CSetInt::fctIfIntExist(int dIntTest)
 {
 	int i; 
 
@@ -70,10 +71,9 @@ bool CSetInt::fctIfIntExist(int dIntTest)
 	{
 		if (m_tTab[i] == dIntTest)
 		{
-			return true;
+			throw int(456);
 		}
 	}
-	return false;
 }
 //..........................................
 // Fonction d'affichage d'un tableau d'int .
