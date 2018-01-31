@@ -1,12 +1,11 @@
 #pragma once
+#include "exception"
 #include "string"
 using namespace std;
 
 #define TAILLESTANDARD 5
 #define STOP 0
 #define CONTINUE 1
-#define ERREURTAILLE 123
-#define ERREURINTEXISTS 456
 
 class CSetInt
 {
@@ -27,3 +26,16 @@ public:
 	void fctShowTable() const throw();
 };
 
+class Erreur : public exception
+{
+private:
+	int m_dNumeroErreur;
+	string m_strMessageErreur;
+	int m_dNiveauErreur;
+public:
+	Erreur(int dNumero, string const& strPhrase, int dNiveau) throw();	//Constructeur reprenant un numero d'erreur, un message d'erreur et un niveau d'erreur.
+	virtual ~Erreur() throw();											//Déconstructeur 
+	virtual const char* what() const throw();							//Affichage d'un message d'erreur
+	int getNiveauErreur() const throw();
+	int getNumeroErreur() const throw();
+};

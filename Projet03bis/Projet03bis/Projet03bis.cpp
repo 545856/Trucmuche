@@ -45,16 +45,9 @@ int fctMenu(CSetInt *tab1)
 		{
 			tab1->fctAddInt(dChoix);						// Insertion d'un nouvel entier dans le tableau.
 		}													// Contrôle : espace disponible et éventuel  
-		catch (int dA)										// présence de l'entier.
+		catch (exception const& oE)							// présence de l'entier.
 		{
-			if (dA == ERREURTAILLE)
-			{
-				cerr << "Erreur : taille du tableau maximale atteinte" << endl;
-			}
-			if (dA == ERREURINTEXISTS)
-			{
-				cerr << "Erreur : entier deja present au sein du tableau" << endl;
-			}
+			cerr << "Erreur : " << oE.what() << endl;
 		}
 		return CONTINUE;
 	case 2:													// Affichage du tableau.
@@ -67,16 +60,9 @@ int fctMenu(CSetInt *tab1)
 			{
 				tab1->fctAddInt(i + 1);
 			}
-			catch (int dA)										
+			catch (exception const& oE)
 			{
-				if (dA == ERREURTAILLE)
-				{
-					cerr << "Erreur : taille du tableau maximale atteinte" << endl;
-				}
-				if (dA == ERREURINTEXISTS)
-				{
-					cerr << "Erreur : entier deja present au sein du tableau" << endl;
-				}
+				cerr << "Erreur : " << oE.what() << endl;
 			}
 		}
 		return CONTINUE;
