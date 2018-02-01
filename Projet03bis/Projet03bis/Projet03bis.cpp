@@ -9,8 +9,6 @@ int fctMenu(CSetInt *tab1);
 int main()
 {
 	CSetInt oCSetInt1(TAILLESTANDARD);
-	int dSommeEntiers;
-
 	do
 	{
 		//system("cls");
@@ -21,32 +19,49 @@ int main()
 		cout << "[3] Lancer une insertion automatiquer pour tester la taille max du tableau." << endl;
 		cout << "--- PART 2 ----" << endl;
 		cout << "[4] Tester le constructeur de copie" << endl;
-		cout << "[5] Tester la surcharge de l'opérateur d'assignation" << endl;
-		cout << "[6] Tester la surcharge de l'opérateur de cast" << endl;
+		cout << "[5] Tester la surcharge de l'operateur d'assignation" << endl;
+		cout << "[6] Tester la surcharge de l'operateur de cast" << endl;
 		cout << "[0] Sortir du programme." << endl;
 	} while (fctMenu(&oCSetInt1) != STOP);
-
-	CSetInt oCSetInt2(oCSetInt1); //Constructeur de copie
-	oCSetInt2.fctShowTable();
 	
+	/*CSetInt oCSetInt2(oCSetInt1);
+	oCSetInt2.fctShowTable();
 	CSetInt oCSetInt3;	//Surcharge de l'opérateur d'assignation
 	oCSetInt3 = oCSetInt1;
 	oCSetInt3.fctShowTable();
-
 	dSommeEntiers = int(oCSetInt3); //Surcharge de l'opérateur de cast
-	cout << dSommeEntiers << endl;
+	cout << dSommeEntiers << endl;*/
 
 	return 0;
 }
 
 //
-int fctMenu(CSetInt *tab1)
+int fctMenu(CSetInt *oCSetInt1)
 {
 	int dChoix;
 
 	cout << "Votre choix : ";
 	cin >> dChoix;
 	cout << endl;
+
+	if (dChoix == 4)
+	{
+		CSetInt *oCSetInt2 = new CSetInt(*oCSetInt1);
+		oCSetInt2->fctShowTable();
+		return CONTINUE;
+	}
+	if (dChoix == 5)
+	{
+		CSetInt *oCSetInt3 = new CSetInt;
+		*oCSetInt3 = *oCSetInt1;
+		oCSetInt3->fctShowTable();
+	}
+	if (dChoix = 6)
+	{
+		int dSommeEntiers;
+		dSommeEntiers = int(*oCSetInt3); //Surcharge de l'opérateur de cast
+		cout << dSommeEntiers << endl;
+	}
 
 	switch (dChoix)
 	{
@@ -59,7 +74,7 @@ int fctMenu(CSetInt *tab1)
 
 		try
 		{
-			tab1->fctAddInt(dChoix);						// Insertion d'un nouvel entier dans le tableau.
+			oCSetInt1->fctAddInt(dChoix);					// Insertion d'un nouvel entier dans le tableau.
 		}													// Contrôle : espace disponible et éventuel  
 		catch (exception const& oE)							// présence de l'entier.
 		{
@@ -67,14 +82,14 @@ int fctMenu(CSetInt *tab1)
 		}
 		return CONTINUE;
 	case 2:													// Affichage du tableau.
-		tab1->fctShowTable();
+		oCSetInt1->fctShowTable();
 		return CONTINUE;
 	case 3:													// Insertion d'une chaîne d'entier dans le tableau
 		for (int i = 0; i < TAILLESTANDARD + 1; i++)		// jusqu'à atteindre la taille maximale.
 		{
 			try
 			{
-				tab1->fctAddInt(i + 1);
+				oCSetInt1->fctAddInt(i + 1);
 			}
 			catch (exception const& oE)
 			{
@@ -82,9 +97,10 @@ int fctMenu(CSetInt *tab1)
 			}
 		}
 		return CONTINUE;
-	case 4:
-
+	case 4:													//Tester le constructeur par copie
+	case 5:													//Surcharge de l'opérateur d'assignation
 		return CONTINUE;
+	case 6:
 	default:
 		cout << "Choix non valide, fin du programme" << endl;// Fin du programme.
 		return STOP;

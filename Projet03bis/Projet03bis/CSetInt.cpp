@@ -21,10 +21,11 @@ CSetInt::CSetInt(int dInt)
 }
 CSetInt::CSetInt(const CSetInt& oCSetInt)
 {
-	m_tTab = (int*)malloc(sizeof(int) * oCSetInt.m_dTailleMax);
-	m_dIndex = oCSetInt.m_dIndex;
-	m_dTailleMax = oCSetInt.m_dTailleMax;
-	for (int i = 0; i < m_dIndex; i++)
+	m_tTab = (int*)malloc(sizeof(int) * oCSetInt.Get_TailleMax());
+	Set_dIndex(oCSetInt.Get_dIndex());
+	Set_TailleMax(oCSetInt.Get_TailleMax());
+
+	for (int i = 0; i < Get_dIndex(); i++)
 	{
 		m_tTab[i] = oCSetInt.m_tTab[i];
 	}
@@ -39,11 +40,10 @@ CSetInt::~CSetInt()
 //...........................
 CSetInt CSetInt::operator = (const CSetInt& oCSetInt)
 {
-	//this->m_tTab = (int*)malloc(sizeof(int) * TAILLESTANDARD);
-	this->m_dIndex = oCSetInt.m_dIndex;
-	this->m_dTailleMax = oCSetInt.m_dTailleMax;
+	this->Set_dIndex(oCSetInt.Get_dIndex());
+	this->Set_TailleMax(oCSetInt.Get_TailleMax());
 	
-	for (int i = 0; i < this->m_dIndex; i++)
+	for (int i = 0; i < this->Get_dIndex(); i++)
 	{
 		this->m_tTab[i] = oCSetInt.m_tTab[i];
 	}
@@ -53,7 +53,7 @@ CSetInt::operator int() const
 {
 	int dSommeEntiers = 0;
 
-	cout << "Conversion d'un tableau d'entiers en la somme de ses différents elemnts" << endl;
+	cout << "Conversion d'un tableau d'entiers en la somme de ses differents elements" << endl;
 		for (int i = 0; i < m_dIndex; i++)
 	{
 			dSommeEntiers += m_tTab[i];
@@ -75,7 +75,7 @@ void CSetInt::Set_TailleMax(int dTaille)
 {
 	m_dTailleMax = dTaille;
 }
-void CSetInt::Set_dindex(int dIndex)
+void CSetInt::Set_dIndex(int dIndex)
 {
 	m_dIndex = dIndex;
 }

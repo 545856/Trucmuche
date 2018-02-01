@@ -28,7 +28,7 @@ public:
 	void fctShowTable() const noexcept(true);
 	//Actions
 	void Set_TailleMax(int dTaille);
-	void Set_dindex(int dIndex);
+	void Set_dIndex(int dIndex);
 	void fctAddInt(int dAdd);				//Ajout d'un entier dans le tableau et contrôle de l'espace disponible.
 	void fctIfIntExist(int dIntTest);		//Contrôle de la présence d'un entier dasn le tableau.	
 };

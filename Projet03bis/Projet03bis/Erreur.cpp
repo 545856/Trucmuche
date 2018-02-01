@@ -7,7 +7,7 @@ using namespace std;
 //...............................
 // Constructeurs et destructeur .
 //...............................
-Erreur::Erreur(int dNumero, string const& strPhrase, int dNiveau) throw()
+Erreur::Erreur(int dNumero, string const& strPhrase, int dNiveau) noexcept(true)
 {
 	m_dNumeroErreur = dNumero;
 	m_strMessageErreur = strPhrase;
@@ -20,15 +20,15 @@ Erreur::~Erreur() throw()
 //....................
 // Getters & Setters .
 //....................
-const char* Erreur::what() const throw()
+const char* Erreur::what() const noexcept(true)
 {
 	return m_strMessageErreur.c_str();
 }
-int Erreur::getNiveauErreur() const throw()
+int Erreur::getNiveauErreur() const noexcept(true)
 {
 	return m_dNiveauErreur;
 }
-int Erreur::getNumeroErreur() const throw()
+int Erreur::getNumeroErreur() const noexcept(true)
 {
 	return m_dNumeroErreur;
 }
