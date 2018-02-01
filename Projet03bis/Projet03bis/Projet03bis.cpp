@@ -9,6 +9,7 @@ int fctMenu(CSetInt *tab1);
 int main()
 {
 	CSetInt oCSetInt1(TAILLESTANDARD);
+	int dSommeEntiers;
 
 	do
 	{
@@ -21,11 +22,15 @@ int main()
 		cout << "[0] Sortir du programme." << endl;
 	} while (fctMenu(&oCSetInt1) != STOP);
 
-	CSetInt oCSetInt2(oCSetInt1);
+	CSetInt oCSetInt2(oCSetInt1); //Constructeur de copies
 	oCSetInt2.fctShowTable();
-	CSetInt oCSetInt3;
+	
+	CSetInt oCSetInt3;	//Surcharge de l'opérateur d'assignation
 	oCSetInt3 = oCSetInt1;
 	oCSetInt3.fctShowTable();
+
+	dSommeEntiers = int(oCSetInt3); //Surcharge de l'opérateur de cast
+	cout << dSommeEntiers;
 
 	return 0;
 }

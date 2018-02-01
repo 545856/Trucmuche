@@ -50,7 +50,14 @@ CSetInt CSetInt::operator = (const CSetInt& oCSetInt)
 }
 CSetInt::operator int() const
 {
-	return 3;
+	int dSommeEntiers = 0;
+
+	cout << "Conversion d'un tableau d'entiers en la somem de ses différents elemnts" << endl;
+		for (int i = 0; i < m_dIndex; i++)
+	{
+			dSommeEntiers = dSommeEntiers + m_tTab[i];
+	}
+		return dSommeEntiers;
 }
 //....................
 // Getters & Setters .
