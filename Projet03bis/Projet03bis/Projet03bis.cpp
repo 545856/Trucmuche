@@ -14,15 +14,19 @@ int main()
 	do
 	{
 		//system("cls");
-		cout << endl << "\t ---MANIPULATION D'UN TABLEAU D'ENTIERS---" << endl << endl;
+		cout << endl << "\t--- MANIPULATION D'UN TABLEAU D'ENTIERS ---" << endl << endl;
+		cout << "--- PART 1 ---" << endl;
 		cout << "[1] Entrer un nouvel entier positif." << endl;
 		cout << "[2] Afficher le tableau." << endl;
 		cout << "[3] Lancer une insertion automatiquer pour tester la taille max du tableau." << endl;
-		cout << "[4] Creer une copie d'un tableau d'entiers et l'afficher." << endl;
+		cout << "--- PART 2 ----" << endl;
+		cout << "[4] Tester le constructeur de copie" << endl;
+		cout << "[5] Tester la surcharge de l'opérateur d'assignation" << endl;
+		cout << "[6] Tester la surcharge de l'opérateur de cast" << endl;
 		cout << "[0] Sortir du programme." << endl;
 	} while (fctMenu(&oCSetInt1) != STOP);
 
-	CSetInt oCSetInt2(oCSetInt1); //Constructeur de copies
+	CSetInt oCSetInt2(oCSetInt1); //Constructeur de copie
 	oCSetInt2.fctShowTable();
 	
 	CSetInt oCSetInt3;	//Surcharge de l'opérateur d'assignation
@@ -30,7 +34,7 @@ int main()
 	oCSetInt3.fctShowTable();
 
 	dSommeEntiers = int(oCSetInt3); //Surcharge de l'opérateur de cast
-	cout << dSommeEntiers;
+	cout << dSommeEntiers << endl;
 
 	return 0;
 }
@@ -77,6 +81,9 @@ int fctMenu(CSetInt *tab1)
 				cerr << "Erreur : " << oE.what() << endl;
 			}
 		}
+		return CONTINUE;
+	case 4:
+
 		return CONTINUE;
 	default:
 		cout << "Choix non valide, fin du programme" << endl;// Fin du programme.

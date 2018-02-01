@@ -21,7 +21,7 @@ CSetInt::CSetInt(int dInt)
 }
 CSetInt::CSetInt(const CSetInt& oCSetInt)
 {
-	m_tTab = (int*)malloc(sizeof(int) * TAILLESTANDARD);
+	m_tTab = (int*)malloc(sizeof(int) * oCSetInt.m_dTailleMax);
 	m_dIndex = oCSetInt.m_dIndex;
 	m_dTailleMax = oCSetInt.m_dTailleMax;
 	for (int i = 0; i < m_dIndex; i++)
@@ -39,9 +39,10 @@ CSetInt::~CSetInt()
 //...........................
 CSetInt CSetInt::operator = (const CSetInt& oCSetInt)
 {
-	this->m_tTab = (int*)malloc(sizeof(int) * TAILLESTANDARD);
+	//this->m_tTab = (int*)malloc(sizeof(int) * TAILLESTANDARD);
 	this->m_dIndex = oCSetInt.m_dIndex;
 	this->m_dTailleMax = oCSetInt.m_dTailleMax;
+	
 	for (int i = 0; i < this->m_dIndex; i++)
 	{
 		this->m_tTab[i] = oCSetInt.m_tTab[i];
@@ -52,21 +53,21 @@ CSetInt::operator int() const
 {
 	int dSommeEntiers = 0;
 
-	cout << "Conversion d'un tableau d'entiers en la somem de ses différents elemnts" << endl;
+	cout << "Conversion d'un tableau d'entiers en la somme de ses différents elemnts" << endl;
 		for (int i = 0; i < m_dIndex; i++)
 	{
-			dSommeEntiers = dSommeEntiers + m_tTab[i];
+			dSommeEntiers += m_tTab[i];
 	}
 		return dSommeEntiers;
 }
 //....................
 // Getters & Setters .
 //....................
-int CSetInt::Get_TailleMax() const throw()
+int CSetInt::Get_TailleMax() const noexcept(true)
 {
 	return m_dTailleMax;
 }
-int CSetInt::Get_dIndex() const throw()
+int CSetInt::Get_dIndex() const noexcept(true)
 {
 	return m_dIndex;
 }
@@ -107,7 +108,7 @@ void CSetInt::fctIfIntExist(int dIntTest)
 //..........................................
 // Fonction d'affichage d'un tableau d'int .
 //..........................................
-void CSetInt::fctShowTable() const throw()
+void CSetInt::fctShowTable() const noexcept(true)
 {
 	cout << "Tableau d'entiers :" << endl;
 	for (int i = 0; i < m_dIndex; i++)

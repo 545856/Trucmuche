@@ -23,9 +23,9 @@ public:
 	operator int() const;					//Surcharge de l'opérateur de cast entype int.
 	CSetInt operator = (const CSetInt &oCestInt);	//Surcharche de l'opérateur d'assignation pour un objet de type CSetInt.
 	//Prédicats
-	int Get_TailleMax() const throw();
-	int Get_dIndex() const throw();
-	void fctShowTable() const throw();
+	int Get_TailleMax() const noexcept(true);
+	int Get_dIndex() const noexcept(true);
+	void fctShowTable() const noexcept(true);
 	//Actions
 	void Set_TailleMax(int dTaille);
 	void Set_dindex(int dIndex);
@@ -40,9 +40,9 @@ private:
 	string m_strMessageErreur;
 	int m_dNiveauErreur;
 public:
-	Erreur(int dNumero, string const& strPhrase, int dNiveau) throw();	//Constructeur reprenant un numero d'erreur, un message d'erreur et un niveau d'erreur.
+	Erreur(int dNumero, string const& strPhrase, int dNiveau) noexcept(true);	//Constructeur reprenant un numero d'erreur, un message d'erreur et un niveau d'erreur.
 	virtual ~Erreur() throw();											//Déconstructeur 
-	virtual const char* what() const throw();							//Affichage d'un message d'erreur
-	int getNiveauErreur() const throw();
-	int getNumeroErreur() const throw();
+	virtual const char* what() const noexcept(true);							//Affichage d'un message d'erreur
+	int getNiveauErreur() const noexcept(true);
+	int getNumeroErreur() const noexcept(true);
 };
